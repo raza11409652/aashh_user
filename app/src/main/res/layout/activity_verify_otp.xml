@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ui.signup.VerifyOtp">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/appbar"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_48"
+        android:orientation="vertical"
+        android:padding="@dimen/parent_padding"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <TextView
+            style="@style/text_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/verify_number"
+            android:textAlignment="center"></TextView>
+
+        <TextView
+            style="@style/text_sub_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:text="@string/otp_sub_text"
+            android:textAlignment="center"></TextView>
+
+        <com.aasshh.user.widget.OtpEditText
+            android:id="@+id/otp_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_24"
+            android:background="@drawable/otp_background"
+            android:inputType="number">
+
+        </com.aasshh.user.widget.OtpEditText>
+
+        <Button
+            android:id="@+id/continue_btn"
+            style="@style/PrimaryBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_120"
+            android:text="@string/create_account"></Button>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:text="@string/resend_otp_text"
+            android:textAlignment="center"
+            android:textColor="@color/black"></TextView>
+
+        <Button
+            android:id="@+id/resent_otp_btn"
+            style="@style/FlatButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_top"
+            android:text="@string/resend_otp"></Button>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

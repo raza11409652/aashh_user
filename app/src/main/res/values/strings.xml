@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">AASSHH</string>
+    <string name="home">Home</string>
+    <string name="cart">My Cart</string>
+    <string name="order_history">Order History</string>
+    <string name="menu">Menu</string>
+    <string name="more">More</string>
+    <string name="login">Log in</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="password_error">Invalid Password (Min 4 char)</string>
+    <string name="not_have_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="get_started">Get Started</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="create_account">Create Account</string>
+    <string name="phone_error">Invalid mobile number</string>
+    <string name="phone_required">Mobile number is required</string>
+    <string name="otp_sub_text">Enter the 4-digit OTP sent to your registered mobile number</string>
+    <string name="verify_number">Verify Number</string>
+    <string name="resend_otp_text">Don\'t receive the code?</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="otp_required">Otp is required</string>
+
+</resources>
