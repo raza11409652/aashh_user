@@ -7,6 +7,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.aasshh.user.ui.Home;
 import com.aasshh.user.ui.Login;
 
 /**
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent home = new Intent(getApplicationContext(), Login.class);
+        Intent home = new Intent(getApplicationContext(), Home.class);
         startActivity(home);
         finish();
 

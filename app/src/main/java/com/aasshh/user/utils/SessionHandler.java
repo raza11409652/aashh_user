@@ -16,6 +16,7 @@ public class SessionHandler {
     private static final String LOGGED_IN_USER = "logged_in_user"; //it will store User id
     private static final String DEVICE_TOKEN = "device_Token"; //it will store uid
     private static final String LOGGED_TOKEN = "login_Token"; //it will store uid
+    private static final String LOGGED_USER_NAME = "login_Token"; //it will store uid
     String TAG = SessionHandler.class.getSimpleName();
 
     @SuppressLint("CommitPrefEdits")
@@ -36,6 +37,16 @@ public class SessionHandler {
         editor.putString(LOGGED_IN_MOBILE, mobile);
         editor.commit();
         Log.d(TAG, "setLoggedInMobile: Mobile number changed");
+    }
+
+    public void setLoggedUserName(String name) {
+        editor.putString(LOGGED_USER_NAME, name);
+        editor.commit();
+        Log.d(TAG, "setLoggedUserName: Modified " + name);
+    }
+
+    public String getLoggedUserName() {
+        return preferences.getString(LOGGED_USER_NAME, null);
     }
 
     public void setLoggedToken(String token) {

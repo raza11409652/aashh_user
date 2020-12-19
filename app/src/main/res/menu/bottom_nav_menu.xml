@@ -4,15 +4,19 @@
     <item
         android:icon="@drawable/icon_home"
         android:id="@+id/home"
+        android:orderInCategory="1"
         android:title="@string/home"></item>
     <item
         android:id="@+id/cart"
+        android:orderInCategory="2"
         android:title="@string/cart"></item>
     <item
+        android:orderInCategory="3"
         android:icon="@drawable/icon_order_history"
         android:id="@+id/order_history"
         android:title="@string/order_history"></item>
     <item
+        android:orderInCategory="4"
         android:icon="@drawable/icon_more"
         android:id="@+id/more"
         android:title="@string/more"></item>

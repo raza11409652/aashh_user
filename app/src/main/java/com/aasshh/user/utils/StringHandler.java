@@ -49,4 +49,11 @@ public class StringHandler {
         }
         return false;
     }
+
+    public static boolean isValidName(String name) {
+        if (TextUtils.isEmpty(name)) return false;
+        if (TextUtils.isDigitsOnly(name)) return false;
+        if (name.length() > 4) return true;
+        return false;
+    }
 }

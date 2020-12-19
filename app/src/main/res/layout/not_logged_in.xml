@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/parent_padding">
+
+    <ImageView
+        android:id="@+id/not_logged_in_icon"
+        android:layout_width="@dimen/size_120"
+        android:layout_height="@dimen/size_120"
+        android:src="@drawable/icon_search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+    <TextView
+        android:id="@+id/not_logged_in_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/not_logged_in"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/not_logged_in_icon">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/login_into_account"
+        android:text="@string/sign_in"
+        android:layout_marginTop="@dimen/size_48"
+        style="@style/PrimaryBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/not_logged_in_icon"></Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

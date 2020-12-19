@@ -1,5 +1,6 @@
 package com.aasshh.user.ui.signup;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -83,10 +84,27 @@ public class VerifyOtp extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            requestApi.postRequest(Server.SIGN_UP, verifyObj, response -> {
+            //Request to server for validation of OTP
+            requestApi.postRequest(Server.VERIFY_OTP, verifyObj, response -> {
                 Log.d(TAG, "onCreate: " + response);
+                try {
+                    int status = response.getInt("status");
+                    String message = response.getString("message");
+                    if (status == 200) {
+                        Intent profileCreate = new Intent(getApplicationContext(), CreateProfile.class);
+                        profileCreate.putExtra("user", user);
+                        startActivity(profileCreate);
+                        finish();
+                    } else {
+                        alert.showError(message);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
 
             });
+
 
         });
 

@@ -4,12 +4,18 @@ import android.content.Context;
 import android.util.Log;
 
 import com.aasshh.user.utils.SessionHandler;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RequestApi {
     Context context;
@@ -28,8 +34,37 @@ public class RequestApi {
     }
 
     public void postRequest(String url, JSONObject postData, Response.Listener<JSONObject> success) {
-        JsonObjectRequest request = new JsonObjectRequest(url, postData, success, error -> Log.d(TAG, "onErrorResponse: " + error.getMessage()));
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                url, postData, success, error -> Log.d(TAG, "onErrorResponse: " + error.getMessage())) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("auth", token);
+                return map;
+            }
+        };
         queue.add(request);
     }
 
+    /**
+     * Get Request
+     *
+     * @param url
+     * @param success
+     */
+    public void getRequest(String url, Response.Listener<String> success) {
+        StringRequest request = new StringRequest(Request.Method.GET
+                , url, success, error -> {
+            Log.d(TAG, "getRequest: " + error.getMessage());
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("auth", token);
+                return map;
+            }
+        };
+        queue.add(request);
+    }
 }

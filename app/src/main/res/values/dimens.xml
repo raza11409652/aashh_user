@@ -11,4 +11,6 @@
     <dimen name="padding_12">12sp</dimen>
     <dimen name="padding_18">18sp</dimen>
     <dimen name="size_120">120sp</dimen>
+    <dimen name="size_80">80sp</dimen>
+    <dimen name="size_10">10sp</dimen>
 </resources>

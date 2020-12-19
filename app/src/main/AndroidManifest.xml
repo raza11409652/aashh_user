@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.signup.CreateProfile"></activity>
+        <activity android:name=".ui.NewPasswordSet"></activity>
+        <activity android:name=".ui.OtpVerification" />
+        <activity android:name=".ui.ForgetPassword" />
+        <activity android:name=".ui.signup.CreateProfile" />
         <activity android:name=".ui.signup.VerifyOtp" />
         <activity android:name=".ui.signup.SignupGetStarted" />
         <activity android:name=".ui.Login" />
