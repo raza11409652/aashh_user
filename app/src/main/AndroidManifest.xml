@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.NewPasswordSet"></activity>
+        <activity android:name=".ui.SingleCategoryProduct"></activity>
+        <activity android:name=".ui.NewPasswordSet" />
         <activity android:name=".ui.OtpVerification" />
         <activity android:name=".ui.ForgetPassword" />
         <activity android:name=".ui.signup.CreateProfile" />

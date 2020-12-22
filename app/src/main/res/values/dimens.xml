@@ -13,4 +13,6 @@
     <dimen name="size_120">120sp</dimen>
     <dimen name="size_80">80sp</dimen>
     <dimen name="size_10">10sp</dimen>
+    <dimen name="size_2">2sp</dimen>
+    <dimen name="size_100">100sp</dimen>
 </resources>

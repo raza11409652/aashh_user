@@ -1,5 +1,6 @@
 package com.aasshh.user.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aasshh.user.Model.ProductCategory;
 import com.aasshh.user.Model.ProductSubCategory;
 import com.aasshh.user.R;
+import com.aasshh.user.adapter.CategoryAdapter;
+import com.aasshh.user.listener.CategoryListener;
 import com.aasshh.user.services.RequestApi;
+import com.aasshh.user.ui.SingleCategoryProduct;
 import com.aasshh.user.utils.Server;
 import com.aasshh.user.utils.StringHandler;
 
@@ -26,7 +30,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class HomeView extends Fragment {
+public class HomeView extends Fragment implements CategoryListener {
 
     EditText searchBox;
     RequestApi requestApi;
@@ -34,6 +38,7 @@ public class HomeView extends Fragment {
     RecyclerView categoriesHolder;
     ArrayList<ProductCategory> list = new ArrayList<>();
     LinearLayoutManager categoriesLayoutManager;
+    CategoryAdapter adapter;
 
     public HomeView() {
         // Required empty public constructor
@@ -46,10 +51,13 @@ public class HomeView extends Fragment {
 
         requestApi = new RequestApi(getContext());
         categoriesLayoutManager = new LinearLayoutManager(getContext());
-//        categoriesHolder =
+
+        adapter = new CategoryAdapter(list, getContext(), this);
+
         getAllProductCategories();
     }
 
+    //Will fetch all the list from the server
     private void getAllProductCategories() {
         requestApi.getRequest(Server.GET_PROD_CATEGORY, response -> {
             Log.d(TAG, "getAllProductCategories: " + response);
@@ -83,8 +91,8 @@ public class HomeView extends Fragment {
                         JSONArray subCat = single.getJSONArray("subCategories");
                         ArrayList<ProductSubCategory> subCategories = new ArrayList<>();
 //                        Log.d(TAG, "getAllProductCategories: " + subCat);
-                        for (int j = 0; j < subCat.length(); i++) {
-                            JSONObject singleSubCat = subCat.getJSONObject(i);
+                        for (int j = 0; j < subCat.length(); j++) {
+                            JSONObject singleSubCat = subCat.getJSONObject(j);
                             String _subId = singleSubCat.getString("id");
                             String _subCategoryID = singleSubCat.getString("categoryID");
                             String _subName = singleSubCat.getString("name");
@@ -107,6 +115,9 @@ public class HomeView extends Fragment {
                         list.add(productCategory);
 
                     }
+
+                    adapter.notifyDataSetChanged();
+
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -122,6 +133,8 @@ public class HomeView extends Fragment {
         searchBox = view.findViewById(R.id.search_box);
         categoriesHolder = view.findViewById(R.id.categories_holder);
         categoriesHolder.setHasFixedSize(true);
+        categoriesHolder.setLayoutManager(categoriesLayoutManager);
+        categoriesHolder.setAdapter(adapter);
         categoriesHolder.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -146,4 +159,12 @@ public class HomeView extends Fragment {
     }
 
 
+    @Override
+    public void onViewMore(ProductCategory category) {
+//        Log.d(TAG, "onViewMore: " + category.getName());
+        Intent singleCategoricalView = new Intent(getContext(), SingleCategoryProduct.class);
+        singleCategoricalView.putExtra("category", category);
+        startActivity(singleCategoricalView);
+
+    }
 }

@@ -1,12 +1,13 @@
 package com.aasshh.user.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ProductCategory {
+public class ProductCategory implements Serializable {
     String id, name, image, description, discountStr, createdAt, updatedAt;
     int status;
     double discount;
-    ArrayList<ProductSubCategory>list ;
+    ArrayList<ProductSubCategory> list;
 
     public ProductCategory(String id, String name, String image, String description,
                            String discountStr, String createdAt, String updatedAt,

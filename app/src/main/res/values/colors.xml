@@ -11,5 +11,6 @@
     <color name="primary">#FB641B</color>
     <color name="primary_dark">#FB641B</color>
     <color name="primary_dark_splash">#BFFF8C54</color>
+    <color name="green_text">#36AC1E</color>
 <!--    <color name="background">#F6F6F6</color>-->
 </resources>

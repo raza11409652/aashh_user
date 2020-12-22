@@ -37,6 +37,16 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">@dimen/size_20</item>
     </style>
+    <style name="text_sub_category_title" parent="TextAppearance.AppCompat.Display4">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/size_20</item>
+    </style>
+    <style name="offer_text" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/green_text</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/size_14</item>
+    </style>
 
     <style name="FlatButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="rippleColor">@color/primary_dark_splash</item>
@@ -79,12 +89,12 @@
         <item name="shapeAppearance">@style/MyShapeAppearance</item>
         <item name="strokeColor">@color/white</item>
         <item name="android:textColor">@color/primary_dark</item>
-        <item name="rippleColor">@color/background</item>
+        <item name="rippleColor">@color/primary_dark_splash</item>
         <item name="backgroundTint">@color/white</item>
         <item name="textAllCaps">false</item>
         <item name="elevation">0sp</item>
-        <item name="android:paddingBottom">@dimen/size_4</item>
-        <item name="android:paddingTop">@dimen/size_4</item>
+        <item name="android:paddingBottom">@dimen/size_2</item>
+        <item name="android:paddingTop">@dimen/size_2</item>
         <item name="android:paddingLeft">@dimen/size_10</item>
         <item name="android:paddingRight">@dimen/size_10</item>
 

@@ -16,27 +16,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/primary_dark"
-            android:padding="@dimen/size_10">
+            android:padding="@dimen/size_2">
 
             <TextView
-                android:textColor="@color/white"
-                android:text="TYPEs"
-                android:layout_centerVertical="true"
+                android:id="@+id/types"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"></TextView>
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/size_10"
+                android:text="TYPEs"
+                android:textColor="@color/white"></TextView>
+
             <Button
                 android:id="@+id/view_all_btn"
                 style="@style/WhiteBtn"
-                android:layout_alignParentEnd="true"
-                android:text="View all"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></Button>
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="View all"></Button>
         </RelativeLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/sub_categories_holder"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="wrap_content"
+            android:padding="@dimen/parent_padding"></androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
