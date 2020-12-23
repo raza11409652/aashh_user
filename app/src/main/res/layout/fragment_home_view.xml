@@ -19,8 +19,8 @@
 
             <ImageView
                 android:id="@+id/image_icon"
-                android:layout_width="@dimen/size_80"
-                android:layout_height="@dimen/size_80"
+                android:layout_width="@dimen/dimen_64"
+                android:layout_height="@dimen/dimen_64"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/black_logo"></ImageView>
 

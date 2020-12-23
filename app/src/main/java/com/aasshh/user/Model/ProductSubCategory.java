@@ -1,6 +1,8 @@
 package com.aasshh.user.Model;
 
-public class ProductSubCategory {
+import java.io.Serializable;
+
+public class ProductSubCategory implements Serializable {
     String id ,categoryId ,  name , description , imageStr , discountStr ,createdAt ,updatedAt ;
     int status  ;
     //need to modify discount value ;

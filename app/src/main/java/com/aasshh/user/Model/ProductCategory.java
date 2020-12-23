@@ -9,6 +9,9 @@ public class ProductCategory implements Serializable {
     double discount;
     ArrayList<ProductSubCategory> list;
 
+    public ProductCategory() {
+    }
+
     public ProductCategory(String id, String name, String image, String description,
                            String discountStr, String createdAt, String updatedAt,
                            int status, double discount, ArrayList<ProductSubCategory> list) {

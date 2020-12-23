@@ -40,6 +40,8 @@ public class SubcategoryAdapter extends RecyclerView.Adapter<SubcategoryHolder> 
                 .placeholder(R.drawable.logo_primary)
                 .into(holder.subCategoryImage);
 
+        holder.offer.setText(subCategory.getDiscountStr());
+
     }
 
     @Override
