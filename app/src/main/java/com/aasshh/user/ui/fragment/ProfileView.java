@@ -31,9 +31,7 @@ public class ProfileView extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sessionHandler = new SessionHandler(getContext());
-        if (sessionHandler.getIsLoggedIn()) {
-            notLoggedIn.setVisibility(View.GONE);
-        }
+
 
     }
 
@@ -42,7 +40,10 @@ public class ProfileView extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         notLoggedIn = view.findViewById(R.id.not_logged_in_layout);
         loginIntoAccount = view.findViewById(R.id.login_into_account);
-
+        //If session found
+        if (sessionHandler.getIsLoggedIn()) {
+            notLoggedIn.setVisibility(View.GONE);
+        }
 
         //On Click listener to login button
         loginIntoAccount.setOnClickListener(v -> {

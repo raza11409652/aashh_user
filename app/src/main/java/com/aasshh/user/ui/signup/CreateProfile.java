@@ -197,6 +197,7 @@ public class CreateProfile extends AppCompatActivity {
                 postData.put("fullName", fullName);
                 postData.put("email", email);
                 postData.put("password", password);
+                postData.put("deviceToken", "NA");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -227,19 +228,19 @@ public class CreateProfile extends AppCompatActivity {
                                 _updatedAt, _createdAt);
 
                         //session has been modified
-                        sessionHandler.setIsLoggedIn(true);
-                        sessionHandler.setLoggedInUser(user.getId());
-                        sessionHandler.setLoggedToken(user.getAccessToken());
-                        sessionHandler.setLoggedInMobile(user.getPhone());
-                        sessionHandler.setLoggedUserName(user.getName());
+//                        sessionHandler.setIsLoggedIn(true);
+//                        sessionHandler.setLoggedInUser(user.getId());
+//                        sessionHandler.setLoggedToken(user.getAccessToken());
+//                        sessionHandler.setLoggedInMobile(user.getPhone());
+//                        sessionHandler.setLoggedUserName(user.getName());
                         //TODO we need to check from where the request has been made
 
                         //Home is started
-                        Intent intent = new Intent(getApplicationContext(), Home.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-                                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-                        finish();
+//                        Intent intent = new Intent(getApplicationContext(), Home.class);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+//                                Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                        startActivity(intent);
+//                        finish();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

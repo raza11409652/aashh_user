@@ -19,8 +19,11 @@ import com.aasshh.user.Model.ProductSubCategory;
 import com.aasshh.user.R;
 import com.aasshh.user.adapter.CategoryAdapter;
 import com.aasshh.user.listener.CategoryListener;
+import com.aasshh.user.listener.SubCategoryListener;
 import com.aasshh.user.services.RequestApi;
+import com.aasshh.user.ui.ProductList;
 import com.aasshh.user.ui.SingleCategoryProduct;
+import com.aasshh.user.utils.Constant;
 import com.aasshh.user.utils.Server;
 import com.aasshh.user.utils.StringHandler;
 
@@ -30,7 +33,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class HomeView extends Fragment implements CategoryListener {
+public class HomeView extends Fragment implements CategoryListener , SubCategoryListener {
 
     EditText searchBox;
     RequestApi requestApi;
@@ -52,7 +55,7 @@ public class HomeView extends Fragment implements CategoryListener {
         requestApi = new RequestApi(getContext());
         categoriesLayoutManager = new LinearLayoutManager(getContext());
 
-        adapter = new CategoryAdapter(list, getContext(), this);
+        adapter = new CategoryAdapter(list, getContext(), this  , this);
 
         getAllProductCategories();
     }
@@ -80,12 +83,14 @@ public class HomeView extends Fragment implements CategoryListener {
                         String _name = single.getString("name");
                         String _image = single.getString("imageStr");
                         String _description = single.getString("description");
-                        int _status = single.getInt("status");
-                        String _discountVal = single.getString("discount");
+                        int _status = 0;
+                        //single.getString("discount")
+                        String _discountVal = "0";
 
                         double _discount = Double.parseDouble(_discountVal == null ||
                                 StringHandler.isEmpty(_discountVal) ? String.valueOf(0) : _discountVal);
-                        String _discountStr = single.getString("discountStr");
+                        String _discountStr = "Discount str";
+                        //
                         String _createdAt = single.getString("createdAt");
                         String _updatedAt = single.getString("updatedAt");
                         JSONArray subCat = single.getJSONArray("subCategories");
@@ -166,5 +171,13 @@ public class HomeView extends Fragment implements CategoryListener {
         singleCategoricalView.putExtra("category", category);
         startActivity(singleCategoricalView);
 
+    }
+
+    @Override
+    public void onClcik(ProductSubCategory subCategory) {
+
+        Constant.CurrentSubCategory = subCategory ;
+        Intent getProducts = new Intent(getContext() , ProductList.class);
+        startActivity(getProducts);
     }
 }

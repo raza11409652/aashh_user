@@ -15,4 +15,6 @@
     <dimen name="size_10">10sp</dimen>
     <dimen name="size_2">2sp</dimen>
     <dimen name="size_100">100sp</dimen>
+    <dimen name="size_160">160sp</dimen>
+    <dimen name="size_180">180sp</dimen>
 </resources>

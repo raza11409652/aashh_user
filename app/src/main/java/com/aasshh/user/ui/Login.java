@@ -13,12 +13,14 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.aasshh.user.Model.User;
 import com.aasshh.user.R;
 import com.aasshh.user.services.RequestApi;
 import com.aasshh.user.ui.signup.SignupGetStarted;
 import com.aasshh.user.utils.Constant;
 import com.aasshh.user.utils.ErrorAlert;
 import com.aasshh.user.utils.Server;
+import com.aasshh.user.utils.SessionHandler;
 import com.aasshh.user.utils.StringHandler;
 import com.aasshh.user.widget.Loader;
 import com.google.android.material.textfield.TextInputEditText;
@@ -40,6 +42,7 @@ public class Login extends AppCompatActivity {
     ErrorAlert alert;
     Loader loader;
     RequestApi api;
+    SessionHandler sessionHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,7 @@ public class Login extends AppCompatActivity {
         alert = new ErrorAlert(this);
         api = new RequestApi(this);
         loader = new Loader(this);
+        sessionHandler = new SessionHandler(this);
 
         //Email input change handler
 //        emailInput.addTextChangedListener(new TextWatcher() {
@@ -173,6 +177,7 @@ public class Login extends AppCompatActivity {
             try {
                 postData.put("phone", phone);
                 postData.put("password", password);
+                postData.put("deviceToken", "Token");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -185,7 +190,26 @@ public class Login extends AppCompatActivity {
                     if (status != 200) {
                         alert.showError(message);
                     } else {
-                        //Login Success
+                        JSONObject profile = response.getJSONObject("data");
+                        String _id = profile.getString("id");
+                        String _name = profile.getString("fullName");
+                        String _email = profile.getString("email");
+                        String _phone = profile.getString("phone");
+                        String _otp = profile.getString("verificationCode");
+                        String _role = profile.getString("role");
+                        String _token = profile.getString("accessToken");
+                        String _status = profile.getString("status");
+                        String imageStr = profile.getString("imageStr");
+                        String _updatedAt = profile.getString("updatedAt");
+                        String _createdAt = profile.getString("createdAt");
+                       User user = new User(_id, _name, _email, _phone, _otp, _role, _token, _status, imageStr,
+                                _updatedAt, _createdAt);
+//                        Log.d(TAG, "onCreate: " + user.getAccessToken());
+                        sessionHandler.setLoggedToken(user.getAccessToken());
+                        sessionHandler.setLoggedUserName(user.getName());
+                        sessionHandler.setLoggedInMobile(user.getPhone());
+                        sessionHandler.setIsLoggedIn(true);
+                        sessionHandler.setLoggedInUser(user.getId());
                         Intent nextScreen = Constant.nextView;
                         if (nextScreen == null) {
                             finish();

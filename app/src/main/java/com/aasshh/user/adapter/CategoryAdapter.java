@@ -13,6 +13,7 @@ import com.aasshh.user.Model.ProductCategory;
 import com.aasshh.user.Model.ProductSubCategory;
 import com.aasshh.user.R;
 import com.aasshh.user.listener.CategoryListener;
+import com.aasshh.user.listener.SubCategoryListener;
 import com.aasshh.user.viewholder.CategoryViewHolder;
 
 import java.util.ArrayList;
@@ -21,12 +22,20 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
     ArrayList<ProductCategory> list;
     Context context;
     CategoryListener listener;
+    SubCategoryListener subCategoryListener ;
 
-    public CategoryAdapter(ArrayList<ProductCategory> list, Context context, CategoryListener listener) {
+    public CategoryAdapter(ArrayList<ProductCategory> list, Context context, CategoryListener listener, SubCategoryListener subCategoryListener) {
         this.list = list;
         this.context = context;
         this.listener = listener;
+        this.subCategoryListener = subCategoryListener;
     }
+
+//    public CategoryAdapter(ArrayList<ProductCategory> list, Context context, CategoryListener listener) {
+//        this.list = list;
+//        this.context = context;
+//        this.listener = listener;
+//    }
 
 //    public CategoryAdapter(ArrayList<ProductCategory> list, Context context) {
 //        this.list = list;
@@ -48,7 +57,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
         GridLayoutManager subcategoriesManager = new GridLayoutManager(this.context, 2);
         holder.subCategoriesHolder.setLayoutManager(subcategoriesManager);
         ArrayList<ProductSubCategory> subCategories = category.getList();
-        SubcategoryAdapter adapter = new SubcategoryAdapter(subCategories, context);
+        SubcategoryAdapter adapter = new SubcategoryAdapter(subCategories, context , subCategoryListener);
         holder.subCategoriesHolder.setAdapter(adapter);
 
         holder.viewMore.setOnClickListener(v -> {

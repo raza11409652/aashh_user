@@ -28,7 +28,7 @@ public class RequestApi {
     public RequestApi(Context context) {
         this.context = context;
         sessionHandler = new SessionHandler(this.context);
-        token = sessionHandler.getLoggedToken();
+        token ="Bearer " + sessionHandler.getLoggedToken();
         Log.d(TAG, "RequestApi:Token  " + token);
         queue = Volley.newRequestQueue(this.context);
     }
@@ -38,9 +38,9 @@ public class RequestApi {
                 Request.Method.POST,
                 url, postData, success, error -> Log.d(TAG, "onErrorResponse: " + error.getMessage())) {
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
+            public Map<String, String> getHeaders() {
                 HashMap<String, String> map = new HashMap<>();
-                map.put("auth", token);
+                map.put("Authorization", token);
                 return map;
             }
         };
@@ -54,12 +54,13 @@ public class RequestApi {
      * @param success
      */
     public void getRequest(String url, Response.Listener<String> success) {
+//        Log.d(TAG, "getRequest: " + sessionHandler.getLoggedToken());
         StringRequest request = new StringRequest(Request.Method.GET
                 , url, success, error -> {
             Log.d(TAG, "getRequest: " + error.getMessage());
         }) {
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
+            public Map<String, String> getHeaders() {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("auth", token);
                 return map;

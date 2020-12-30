@@ -34,5 +34,7 @@
     <string name="not_logged_in">To access your account you need to login into your account</string>
     <string name="reset_password">Reset Password</string>
     <string name="new_password">Set New Password</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="add_cart">Add to cart</string>
 
 </resources>

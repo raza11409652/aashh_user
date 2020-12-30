@@ -15,8 +15,8 @@ public class SessionHandler {
     private static final String LOGGED_IN_MOBILE = "logged_in_mobile";
     private static final String LOGGED_IN_USER = "logged_in_user"; //it will store User id
     private static final String DEVICE_TOKEN = "device_Token"; //it will store uid
-    private static final String LOGGED_TOKEN = "login_Token"; //it will store uid
-    private static final String LOGGED_USER_NAME = "login_Token"; //it will store uid
+    private static final String LOGGED_TOKEN = "login_token"; //it will store uid
+    private static final String LOGGED_USER_NAME = "login_user_name"; //it will store uid
     String TAG = SessionHandler.class.getSimpleName();
 
     @SuppressLint("CommitPrefEdits")
@@ -52,7 +52,7 @@ public class SessionHandler {
     public void setLoggedToken(String token) {
         editor.putString(LOGGED_TOKEN, token);
         editor.commit();
-        Log.d(TAG, "setLoggedToken: Session access token modified");
+        Log.d(TAG, "setLoggedToken: Session access token modified" + token);
     }
 
     public void setLoggedInUser(String id) {

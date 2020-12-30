@@ -8,8 +8,17 @@ public class Server {
     public static final String VERIFY_OTP = ROOT_URL + "customer/verifyOtp";
     public static final String FORGET_PSW = ROOT_URL + "customer/forgotPassword";
 
+    /**
+     * Need Auth
+     *
+     */
+    public static final String ORDER_HISTORY = ROOT_URL + "customer/orders";
 
     //Product related
+    /**
+     * Don't need auth
+     */
     public static final String GET_PROD_CATEGORY = ROOT_URL + "product/getCategories";
+    public static final String GET_PRODUCTS= ROOT_URL + "products";
 
 }

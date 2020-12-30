@@ -9,14 +9,18 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/appbar"></include>
+        layout="@layout/appbar_dark"></include>
 
     <RelativeLayout
-
-        android:id="@+id/sub_categories_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:paddingBottom="@dimen/size_80"
+            android:id="@+id/sub_categories_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
