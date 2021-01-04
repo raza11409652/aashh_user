@@ -62,7 +62,7 @@ public class RequestApi {
             @Override
             public Map<String, String> getHeaders() {
                 HashMap<String, String> map = new HashMap<>();
-                map.put("auth", token);
+                map.put("Authorization", token);
                 return map;
             }
         };

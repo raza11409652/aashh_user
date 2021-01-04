@@ -15,7 +15,8 @@
             android:padding="@dimen/size_10">
 
             <ImageView
-                android:scaleType="centerCrop"
+                android:background="@color/white"
+                android:scaleType="center"
                 android:src="@drawable/icon_search"
                 android:id="@+id/image_view"
                 android:layout_width="@dimen/size_120"
@@ -62,7 +63,7 @@
                 android:layout_marginLeft="@dimen/size_10"
                 android:layout_marginTop="@dimen/margin_top"
                 android:id="@+id/buy_now"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tag"
                 app:layout_constraintStart_toEndOf="@id/image_view"
                 style="@style/OrangeBtn"
                 android:text="@string/buy_now"
@@ -72,7 +73,7 @@
                 android:layout_marginTop="@dimen/margin_top"
                 android:layout_marginStart="@dimen/size_2"
                 android:id="@+id/add_cart"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tag"
                 app:layout_constraintStart_toEndOf="@id/buy_now"
                 style="@style/WhiteBtn"
                 android:text="@string/add_cart"

@@ -2,11 +2,11 @@ package com.aasshh.user.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +18,10 @@ import com.aasshh.user.services.RequestApi;
 import com.aasshh.user.ui.Login;
 import com.aasshh.user.utils.Server;
 import com.aasshh.user.utils.SessionHandler;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class OrderHistoryView extends Fragment {
     ConstraintLayout notLoggedInLayout;
@@ -62,7 +66,25 @@ public class OrderHistoryView extends Fragment {
 
     private void getOrderHistory() {
         requestApi.getRequest(Server.ORDER_HISTORY, response -> {
-            Log.e(TAG, "getOrderHistory: " + response);
+//            Log.e(TAG, "getOrderHistory: " + response);
+            try {
+                JSONObject res = new JSONObject(response);
+                int status = res.getInt("status");
+                if (status != 200) {
+                    //Some error
+                } else {
+                    JSONArray array = res.getJSONArray("data");
+                    if (array.length() < 1) {
+                        //Nothing found
+                        Toast.makeText(getContext(), "Nothing Found" , Toast.LENGTH_SHORT).show();
+                    } else {
+
+                    }
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         });
     }
 

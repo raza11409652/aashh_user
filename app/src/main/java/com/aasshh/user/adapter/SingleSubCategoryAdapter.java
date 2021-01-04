@@ -38,7 +38,14 @@ public class SingleSubCategoryAdapter extends RecyclerView.Adapter<SubcategoryHo
         String image = category.getImageStr();
         Picasso.get().load(image).error(R.drawable.logo_primary)
                 .placeholder(R.drawable.logo_primary).into(holder.subCategoryImage);
+        String offer = category.getDiscountStr();
         holder.offer.setText(category.getDiscountStr());
+        if (offer.equals("null")){
+            holder.offer.setVisibility(View.INVISIBLE);
+        }else{
+            holder.offer.setVisibility(View.VISIBLE);
+        }
+
         holder.name.setText(category.getName());
         holder.description.setText(category.getDescription());
 

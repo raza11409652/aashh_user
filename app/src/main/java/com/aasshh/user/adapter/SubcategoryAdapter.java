@@ -49,8 +49,14 @@ public class SubcategoryAdapter extends RecyclerView.Adapter<SubcategoryHolder> 
                 .error(R.drawable.logo_primary)
                 .placeholder(R.drawable.logo_primary)
                 .into(holder.subCategoryImage);
+        String offer  =subCategory.getDiscountStr();
+        holder.offer.setText(offer);
+        if (offer.equals("null")){
+            holder.offer.setVisibility(View.INVISIBLE);
+        }else{
+            holder.offer.setVisibility(View.VISIBLE);
+        }
 
-        holder.offer.setText(subCategory.getDiscountStr());
         holder.itemView.setOnClickListener(v -> {
             subCategoryListener.onClcik(subCategory);
         });

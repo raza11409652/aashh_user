@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aasshh.user.Model.Products;
 import com.aasshh.user.R;
+import com.aasshh.user.listener.ProductListner;
 import com.aasshh.user.viewholder.ProductViewHolder;
 import com.squareup.picasso.Picasso;
 
@@ -17,12 +18,20 @@ import java.util.ArrayList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     Context context;
+    ProductListner listner;
+
     ArrayList<Products> list;
 
-    public ProductAdapter(Context context, ArrayList<Products> list) {
+    public ProductAdapter(Context context, ProductListner listner, ArrayList<Products> list) {
         this.context = context;
+        this.listner = listner;
         this.list = list;
     }
+
+//    public ProductAdapter(Context context, ArrayList<Products> list) {
+//        this.context = context;
+//        this.list = list;
+//    }
 
     @NonNull
     @Override
@@ -42,6 +51,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
                 .error(R.drawable.logo_primary)
                 .placeholder(R.drawable.logo_primary)
                 .into(holder.productImage);
+
+        holder.addToCart.setOnClickListener(v->{
+            listner.onAddTocart(products);
+        });
 
 
     }
